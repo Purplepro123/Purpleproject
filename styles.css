@@ -1,0 +1,309 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #f5e6cc, #8b5bb7);
+    overflow: hidden;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeIn 1.5s forwards;
+    animation-delay: 0.5s;
+}
+
+.container {
+    text-align: center;
+}
+
+.column-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    width: 80%;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.column h2 {
+    color: purple;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+h1 {
+    color: purple;
+    font-size: 3rem;
+    margin-bottom: 40px;
+}
+
+.button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #7a1e8c;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    transition: background-color 0.4s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #5e1a6c;
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.button:active {
+    transform: translateY(2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    background-color: #4c3a68;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #f5e6cc;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 20px;
+    width: 30%;
+    text-align: center;
+    font-size: 1.5rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border: 2px solid #8b5bb7;
+    position: relative;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.1s ease, transform 0.1s ease;
+}
+
+.modal.show .modal-content {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.modal.hide .modal-content {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.1s ease, transform 0.1s ease;
+}
+
+.close {
+    color: #8b5bb7;
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    transition: color 0.1s ease;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.telegram-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.telegram-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 50px;
+    background-color: #0088cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    padding: 10px;
+}
+
+.telegram-button i {
+    margin-right: 10px;
+    font-size: 1.5rem;
+}
+
+.telegram-button span {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.telegram-button:hover {
+    background-color: #0077b3;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        height: auto;
+        overflow: auto;
+    }
+
+    .column-container {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .column {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .button {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .telegram-buttons {
+        position: static;
+        margin-top: 20px;
+    }
+
+    .telegram-button {
+        width: 100%;
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 1024px) and (orientation: landscape) and (pointer: coarse) {
+    body {
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100vh;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    .column-container {
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        padding: 0;
+        gap: 15px;
+    }
+
+    .column h2 {
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+    }
+
+    .column {
+        width: 30%;
+        margin-bottom: 10px;
+    }
+
+    .button {
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        width: 85%;
+    }
+
+    .telegram-buttons {
+        right: 10px;
+        bottom: 10px;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .telegram-button {
+        font-size: 0.75rem;
+        padding: 6px 15px;
+        width: auto;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    body {
+        padding: 10px 20px;
+    }
+
+    .column-container {
+        margin: 0 auto;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    .column {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .button {
+        margin: 5px auto;
+    }
+
+    .telegram-buttons {
+        margin: 0 auto;
+    }
+
+    .telegram-button {
+        margin: 5px 0;
+    }
+}
+
+
+
+
