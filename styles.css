@@ -1,18 +1,34 @@
+@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background: linear-gradient(135deg, #f5e6cc, #8b5bb7);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'SF Pro Display', Arial, sans-serif;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #f5e6cc, #8b5bb7);
-    overflow: hidden;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 40px 0;
+    margin: 0 auto;
 }
+
 
 .fade-in {
     opacity: 0;
@@ -23,58 +39,103 @@ body {
 
 .container {
     text-align: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.hstack {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.vstack {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
 }
 
 .column-container {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
-    width: 80%;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .column {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
 }
 
 .column h2 {
-    color: purple;
-    font-size: 1.8rem;
-    margin-bottom: 10px;
+    color: #4a4a4a;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 h1 {
-    color: purple;
-    font-size: 3rem;
+    color: #8b5bb7;
+    font-size: 2.5rem;
     margin-bottom: 40px;
+    text-align: center;
 }
 
 .button {
-    display: inline-block;
-    padding: 15px 30px;
-    background-color: #7a1e8c;
-    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
     text-decoration: none;
-    border-radius: 25px;
-    font-size: 1.2rem;
     font-weight: bold;
-    margin-bottom: 15px;
-    transition: background-color 0.4s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    border: 2px solid transparent;
-    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 20px;
+    border-radius: 15px;
+    color: #8B5BB7;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 180px;
+    text-align: left;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .button:hover {
-    background-color: #5e1a6c;
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .button:active {
     transform: translateY(2px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    background-color: #4c3a68;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: #e0e0e0;
+}
+
+.button span {
+    font-size: 1rem;
+    font-weight: normal;
+    color: #555;
+}
+
+.button::after {
+    content: "➜";
+    font-size: 1.5rem;
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    color: #8b5bb7;
+    transition: transform 0.3s ease;
+}
+
+.button:hover::after {
+    transform: translateX(5px);
 }
 
 .modal {
@@ -89,7 +150,7 @@ h1 {
 }
 
 .modal-content {
-    background-color: #f5e6cc;
+    background-color: #8b5bb7;
     margin: 15% auto;
     padding: 20px;
     border-radius: 20px;
@@ -134,8 +195,8 @@ h1 {
 
 .telegram-buttons {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 15px;
+    right: 15px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -205,7 +266,10 @@ h1 {
 
     .telegram-buttons {
         position: static;
-        margin-top: 20px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .telegram-button {
@@ -252,10 +316,11 @@ h1 {
     }
 
     .telegram-buttons {
-        right: 10px;
-        bottom: 10px;
+        position: static;
+        margin: 0 auto;
+        display: flex;
         flex-direction: column;
-        align-items: flex-end;
+        align-items: center;
     }
 
     .telegram-button {
@@ -296,14 +361,14 @@ h1 {
     }
 
     .telegram-buttons {
+        position: static;
         margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .telegram-button {
         margin: 5px 0;
     }
 }
-
-
-
-
