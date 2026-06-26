@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heliotrope | InternalUI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+html {
+    overflow-y: auto !important;
+    min-height: 100vh;
+    min-height: 100dvh;
+    height: auto !important;
+    background: linear-gradient(135deg, #f5e6cc, #8b5bb7) !important;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    min-height: 100dvh;
+    height: auto !important;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px 20px 140px 20px !important;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    position: relative; 
+    background: transparent !important;
+}
+
+body::before {
+    content: "";
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(135deg, #f5e6cc, #8b5bb7) !important;
+    z-index: -1 !important; 
+    pointer-events: none !important; 
+}
+
+.back-arrow {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    color: #8b5bb7;
+    text-decoration: none;
+    font-weight: 600;
+    background-color: rgba(245, 230, 204, 0.8);
+    padding: 10px 15px;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    z-index: 9999;
+}
+
+.back-arrow:hover {
+    background-color: #8b5bb7;
+    color: #f5e6cc;
+}
+
+.content-box {
+    background: rgba(255, 255, 255, 0.2) !important;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 60%;
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    display: block !important;
+    overflow: visible !important;
+    position: relative !important;
+    
+    -webkit-transform: translate3d(0,0,0) !important;
+    transform: translate3d(0,0,0) !important;
+    will-change: auto !important;
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(10px) translateZ(0); }
+    100% { opacity: 1; transform: translateY(0) translateZ(0); }
+}
+
+h1 {
+    text-align: center;
+    color: #8b5bb7;
+    font-weight: 600;
+}
+
+p {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 400; 
+}
+
+ol, ol.guide-list, ul {
+    list-style-type: none !important;
+    padding-left: 0 !important;
+    margin: 20px 0;
+}
+
+li {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+strong {
+    font-weight: 600;
+    color: #8b5bb7;
+}
+
+.link {
+    color: #8b5bb7;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+code { 
+    font-family: "SF Mono", SFMono-Regular, ui-monospace, "JetBrains Mono", Consolas, monospace !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; 
+} 
+
+.terminal-block { 
+    background: rgba(255, 255, 255, 0.25); 
+    border: 1px solid rgba(139, 91, 183, 0.2); 
+    border-left: 4px solid #8b5bb7; 
+    border-radius: 12px; 
+    margin: 16px 0; 
+    box-shadow: 0 4px 15px rgba(139, 91, 183, 0.05); 
+    overflow: hidden; 
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+} 
+
+.terminal-header { 
+    background: rgba(139, 91, 183, 0.06); 
+    padding: 10px 14px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(139, 91, 183, 0.12); 
+    width: 100% !important;
+    box-sizing: border-box !important;
+} 
+
+.terminal-left-side {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.terminal-buttons { 
+    display: flex; 
+    gap: 6px; 
+} 
+
+.terminal-buttons span { 
+    width: 8px; 
+    height: 8px; 
+    border-radius: 50%; 
+    display: inline-block; 
+    opacity: 0.4; 
+} 
+
+.btn-1 { background-color: #ff5f56; } 
+.btn-2 { background-color: #ffbd2e; } 
+.btn-3 { background-color: #27c93f; } 
+
+.terminal-title { 
+    font-family: 'Poppins', sans-serif; 
+    font-size: 11px; 
+    font-weight: 500; 
+    color: #8b5bb7; 
+} 
+
+.copy-btn {
+    background: rgba(139, 91, 183, 0.1);
+    border: 1px solid rgba(139, 91, 183, 0.2);
+    color: #8b5bb7;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.copy-btn:hover {
+    background: #8b5bb7;
+    color: #ffffff;
+}
+
+.terminal-block pre { 
+    margin: 0; 
+    padding: 16px 16px 22px 16px; 
+    overflow-x: auto !important;
+    background: transparent; 
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.terminal-block code { 
+    background: transparent; 
+    padding: 0; 
+    color: #1c1c1e; 
+    font-size: 14.5px; 
+    line-height: 1.6; 
+    font-weight: 400; 
+    display: block; 
+    white-space: pre; 
+}
+
+@media screen and (max-width: 1024px) {
+    html {
+        overflow: auto !important;
+        height: auto !important;
+    }
+    
+    body {
+        width: 100vw;
+        overflow-x: hidden;
+        height: auto !important;
+        min-height: 100vh;
+        padding: 20px 10px 140px 10px !important; 
+    }
+    
+    .content-box {
+        width: 90% !important;
+        padding: 15px;
+        margin-top: 20px !important;
+    }
+    
+    .back-arrow {
+        position: static !important;
+        align-self: center !important;
+        margin-bottom: 20px !important;
+        font-size: 18px !important;
+        padding: 8px 20px !important;
+    }
+    
+    ol, ol.guide-list, ul, p, li {
+        font-size: 0.95rem;
+    }
+    h1 {
+        font-size: 1.3rem;
+    }
+}
+</style>
+</head>
+<body>
+
+
+
+</style>
+</head>
+<body>
+
+<a href="../index.html" class="back-arrow">&larr; Back</a>
+
+<div class="content-box">
+    <h1>InternalUI Setup with SSH Ramdisk</h1>
+    
+    <p><strong>You need to have:</strong></p>
+    <ul class="guide-list">
+        <li>Mac or MacBook</li>
+        <li>Chimera 1.6.5</li>
+        <li>Legacy iOS Kit</li>
+        <li>InternalUI build (16C49)</li>
+        <li>FTP client like <a href="#" target="_blank" class="link">FileZilla</a></li>
+    </ul>
+
+    <p><strong>Follow the steps below:</strong></p>
+
+    <ol class="guide-list">
+        <li>SSH ramdisk with Legacy iOS Kit and copy "/AppleInternal" to "/mnt1".</li>
+        <li>Copy "/System/Library/PrivateFrameworks" from the dump and paste it to "/mnt1/System/Library/PrivateFrameworks" (skip things that already exist, we only need internal frameworks).</li>
+        <li>Copy Perl and Pearl (if they exist) from "/System/Library" into "/mnt1/System/Library".</li>
+        <li>
+            Edit "SystemVersion.plist" to add the following:<br>
+            <div class="terminal-block">
+                <div class="terminal-header">
+                    <div class="terminal-left-side">
+                        <div class="terminal-buttons">
+                            <span class="btn-1"></span>
+                            <span class="btn-2"></span>
+                            <span class="btn-3"></span>
+                        </div>
+                        <div class="terminal-title">xml</div>
+                    </div>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                <pre style="overflow-x: auto !important; max-width: 100% !important; box-sizing: border-box !important; display: block !important;"><code>&lt;key&gt;ReleaseType&lt;/key&gt;
+&lt;string&gt;Internal&lt;/string&gt;</code></pre>
+            </div>
+        </li>
+        <li>Save the plist and place it into the "CoreServices" folder.</li>
+        <li>Show the contents of "SpringBoard.app" in your dump and copy everything EXCEPT the SpringBoard (Unix executable file). Paste it into "SpringBoard.app" in "/mnt1", skipping files that already exist.</li>
+        <li>
+            Run the following commands in SSH Ramdisk:<br>
+            <div class="terminal-block">
+                <div class="terminal-header">
+                    <div class="terminal-left-side">
+                        <div class="terminal-buttons">
+                            <span class="btn-1"></span>
+                            <span class="btn-2"></span>
+                            <span class="btn-3"></span>
+                        </div>
+                        <div class="terminal-title">bash</div>
+                    </div>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                <pre style="overflow-x: auto !important; max-width: 100% !important; box-sizing: border-box !important; display: block !important;"><code>chown -R root:wheel /mnt1/AppleInternal/
+chown -R root:wheel /mnt1/System/Library/Perl/
+chown -R root:wheel /mnt1/System/Library/Pearl/
+chown -R root:wheel /mnt1/System/Library/PrivateFrameworks/</code></pre>
+            </div>
+        </li>
+        <li>Reboot and enjoy the internalUI dump!</li>
+    </ol>
+
+    <p><strong>NOTES:</strong> To internalize your device, it must be jailbroken semi-untethered (e.g., Taurine or Chimera). Semi-tethered jailbreaks (like checkra1n) will not work with this method. Be sure to install tweaks at least once.</p>
+</div>
+
+<script>
+document.querySelectorAll('.copy-btn').forEach(button => {
+    let timeoutId;
+
+    button.addEventListener('click', () => {
+        const block = button.closest('.terminal-block');
+        const codeText = block.querySelector('code').innerText;
+
+        navigator.clipboard.writeText(codeText).then(() => {
+            clearTimeout(timeoutId);
+
+            button.textContent = 'Copied!';
+
+            timeoutId = setTimeout(() => {
+                button.textContent = 'Copy';
+            }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy text: ', err);
+        });
+    });
+});
+</script>

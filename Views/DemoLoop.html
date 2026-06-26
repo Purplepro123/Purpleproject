@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heliotrope | DemoLoop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+html {
+    overflow-y: auto !important;
+    min-height: 100vh;
+    min-height: 100dvh;
+    height: auto !important;
+    background: linear-gradient(135deg, #f5e6cc, #8b5bb7) fixed !important;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    min-height: 100dvh;
+    height: auto !important;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px 20px 140px 20px !important;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    position: relative; 
+    background: transparent !important;
+    margin: 0;
+}
+
+.back-arrow {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    color: #8b5bb7;
+    text-decoration: none;
+    font-weight: 600;
+    background-color: rgba(245, 230, 204, 0.8);
+    padding: 10px 15px;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    z-index: 9999;
+}
+
+.back-arrow:hover {
+    background-color: #8b5bb7;
+    color: #f5e6cc;
+}
+
+.content-box {
+    background: rgba(255, 255, 255, 0.2) !important;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 60%;
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    display: block !important;
+    overflow: visible !important;
+    position: relative !important;
+    -webkit-transform: translate3d(0,0,0) !important;
+    transform: translate3d(0,0,0) !important;
+    will-change: auto !important;
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(10px) translateZ(0); }
+    100% { opacity: 1; transform: translateY(0) translateZ(0); }
+}
+
+h1 {
+    text-align: center;
+    color: #8b5bb7;
+    font-weight: 600;
+}
+
+p {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 400; 
+}
+
+ol, ol.guide-list, ul {
+    list-style-type: none !important;
+    padding-left: 0 !important;
+    margin: 20px 0;
+}
+
+li {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+strong {
+    font-weight: 600;
+    color: #8b5bb7;
+}
+
+.link {
+    text-decoration: none;
+    font-weight: inherit;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.warning {
+    color: #ff5f56 !important;
+    background: rgba(255, 95, 86, 0.08) !important;
+    border-left: 4px solid #ff5f56 !important;
+    padding: 12px 16px !important;
+    border-radius: 8px;
+    margin: 20px 0 !important;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.warning strong {
+    color: #ff5f56 !important;
+    font-weight: 600 !important;
+}
+
+@media screen and (max-width: 1024px) {
+    body {
+        padding: 20px 10px 140px 10px !important; 
+    }
+    .content-box {
+        width: 90% !important;
+        padding: 15px;
+        margin-top: 20px !important;
+    }
+    ol, ol.guide-list, ul, p, li {
+        font-size: 0.95rem;
+    }
+    h1 {
+        font-size: 1.3rem;
+    }
+}
+
+@media screen and (max-width: 1024px) and (orientation: portrait) {
+    .back-arrow {
+        position: static !important;
+        align-self: center !important;
+        margin-bottom: 20px !important;
+        font-size: 18px !important;
+        padding: 8px 20px !important;
+    }
+    .content-box {
+        margin-top: 20px !important;
+    }
+}
+
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+    .back-arrow {
+        position: absolute !important;
+        top: 20px !important;
+        left: 20px !important;
+        font-size: 24px !important;
+        padding: 10px 15px !important;
+    }
+    .content-box {
+        margin-top: 80px !important;
+        margin-bottom: 40px !important;
+    }
+}
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-arrow">&larr; Back</a>
+    
+    <div class="content-box">
+        <h1>How to get to the Demo Mode</h1>
+        <ol>
+			<li><strong>You need to have:</strong></li>
+            <li>A main device (device where you wanna get to Demo Update) and any other device.</li>	
+            <li>This will erase all data on the device, and you might not be able to unenroll. Keep that in mind, so never try to do that on your personal phone!</li>
+            <li><strong>Follow the steps below:</strong></li>
+            <li>1. Go to <a href="DemoUnit" class="link" target="_blank">https://demounit.apple.com</a> (on another device, not the one you want to install demo mode on).</li>
+            <li>2. Sign in with your Apple ID.</li>
+            <li>3. Install the app.</li>
+            <li>4. Choose a random Apple Store (doesn't matter).</li>
+            <li>5. Tap "Enroll a new device".</li>
+            <li>6. Click "Manual entry".</li>
+            <li>7. Enter the serial number of your device (the device you're trying to put demo mode on).</li>
+            <li>8. Click "Submit".</li>
+            <li>9. Click "Confirm", then it will show you a code. Write down/save it for later.</li>
+            <li>10. Reset all content and settings on the device you want to install demo mode on (not the device with the DemoUnit app).</li>
+            <li>11. Continue setup until you're asked for a code. Enter the code you got at step 9.</li>
+            <li>12. Wait until the demo update finishes.</li>
+            <li><strong>ENJOY!</strong></li>
+        </ol>
+    </div>
+
+    <div class="content-box">
+        <h1>How to get device out of Demo Mode</h1>
+        <ol>
+            <li>1. Go to the admin menu (three fingers in the corner - picture link at the bottom).</li>
+            <li>2. Press "Unenroll", it will work fine!</li>
+            <li>3. If the store is enrolled in the Demo Device Lock Theft Deterrence Program, you have to use the web app, which you don’t have the password for, so you can’t unenroll it.</li>
+            <li>4. Just put your three fingers in the areas there, and then choose reset.</li>
+        </ol>
+    </div>
+
+    <div class="content-box">
+        <h1>How to get to the Retail Demo Mode on Apple TV</h1>
+        <ol>
+            <li>1. Open "Settings".</li>
+            <li>2. Click "General" and highlight "About".</li>
+            <li>3. Press the "Play/Pause" button 4 times.</li>
+            <li>4. Click the "Demo Mode" panel and select "Apple Store" or "Channel" to set the retail demo mode type.</li>
+            <li>5. Click "Apply Changes" to enable Demo mode.</li>
+        </ol>
+        <p><strong>Note:</strong> To turn off demo mode, simply follow steps 1-4 and choose the "Off" option.</p>
+        <p><strong>In Demo Mode:</strong> Many settings are greyed out and inaccessible. Demo Mode allows you to:</p>
+        <ul>
+            <li>Restrict video playback to a specific duration.</li>
+            <li>Lock down settings.</li>
+            <li>Establish a custom screensaver asset URL. This URL points to an Apple-created screensaver that downloads in the background and plays after applying changes. The screensaver will repeatedly loop while the Apple TV is in demo mode, just like you’d see at a retail store.</li>
+        </ul>
+        <p>You could even, in theory, provide your own custom URL to play your own custom screensavers.</p>
+    </div>
+</body>
+</html>
+
